@@ -3,6 +3,8 @@ header {
   height: 6.5rem;
   padding: 0 4rem 0 4rem;
 
+  position: sticky;
+  z-index: 1;
   top: 0;
   display: flex;
   align-items: center;
@@ -17,6 +19,7 @@ header {
   }
 
   div {
+    position: relative;
     &.title {
       display: flex;
       align-items: center;

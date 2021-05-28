@@ -1,8 +1,10 @@
 div {
-  // height: 1500px;
+  height: 1500px;
+  position: relative;
   h1 {
-    padding: 4rem   0     4rem  0;
-    margin:  0      4rem  0     4rem;
+    padding: 4rem 0 4rem 0;
+    margin: 0 4rem 0 4rem;
+
     color: var(--gray-100);
 
     font-size: 2rem;
