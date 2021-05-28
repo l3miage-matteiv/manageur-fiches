@@ -19,6 +19,24 @@ export class HomeComponent implements OnInit {
     recruiter: "Burrossauro",
     modifyFiche(){}
   }
+  ,
+  {
+    companyName: "Capgemini",
+    recruiter: "Nicolas Sarcozi",
+    modifyFiche(){}
+  }
+  ,
+  {
+    companyName: "Hardis",
+    recruiter: "Burrossauro",
+    modifyFiche(){}
+  }
+  ,
+  {
+    companyName: "Hardis",
+    recruiter: "Burrossauro",
+    modifyFiche(){}
+  }
 
 ];
 
