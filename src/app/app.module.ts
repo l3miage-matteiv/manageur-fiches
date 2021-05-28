@@ -7,20 +7,26 @@ import { HeaderComponent } from './header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatCardModule} from '@angular/material/card';
 import { HomeComponent } from './home/home.component';
+import { FicheComponent } from './fiche/fiche.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    HomeComponent
+    HomeComponent,
+    FicheComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatIconModule,
-    MatMenuModule
+    MatMenuModule,
+    MatGridListModule,
+    MatCardModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

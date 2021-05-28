@@ -1,0 +1,23 @@
+
+mat-card {
+  height: 100%;
+
+  background-color: var(--blue-600);
+
+  &:hover {
+    cursor: pointer;
+    background-color: var(--blue-400)
+  }
+
+  mat-card-title {
+    color: var(--gray-100);
+  }
+
+  mat-card-subtitle {
+    color: var(--gray-200);
+  }
+
+  mat-card-content {
+    color: var(--gray-200);
+  }
+}

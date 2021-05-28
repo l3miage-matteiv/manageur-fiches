@@ -1,3 +1,8 @@
 <div>
   <h1>Fiches de Renseignement</h1>
 </div>
+<mat-grid-list cols="2" rowHeight="3:1">
+  <mat-grid-tile *ngFor="let fiche of fiches">
+    <fiche [companyName]="fiche.companyName" [recruiter]="fiche.recruiter"></fiche>
+  </mat-grid-tile>
+</mat-grid-list>
