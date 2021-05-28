@@ -9,6 +9,7 @@ export class FicheComponent {
 
   @Input('companyName') companyName: string = '';
   @Input('recruiter') recruiter: string = '';
+  @Input('progress') status: "En Cours de Traitement" | "Validé" | "Invalidé" = "En Cours de Traitement";
 
   constructor() { }
 

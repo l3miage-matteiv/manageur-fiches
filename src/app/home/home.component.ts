@@ -7,35 +7,30 @@ import { FicheComponent } from '../fiche/fiche.component';
 })
 export class HomeComponent implements OnInit {
 
-  fiches: FicheComponent[] = [
+  fiches: {companyName: string, recruiter:  string}[] = [
   {
     companyName: "Orange",
     recruiter: "Lula",
-    modifyFiche(){}
   }
   ,
   {
     companyName: "Hardis",
     recruiter: "Burrossauro",
-    modifyFiche(){}
   }
   ,
   {
     companyName: "Capgemini",
     recruiter: "Nicolas Sarcozi",
-    modifyFiche(){}
   }
   ,
   {
     companyName: "Hardis",
     recruiter: "Burrossauro",
-    modifyFiche(){}
   }
   ,
   {
     companyName: "Hardis",
     recruiter: "Burrossauro",
-    modifyFiche(){}
   }
 
 ];

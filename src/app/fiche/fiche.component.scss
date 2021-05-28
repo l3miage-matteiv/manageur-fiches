@@ -14,7 +14,8 @@ mat-card {
   }
 
   span.line-break {
-    border-bottom: 1px solid var(--blue-400);
+    border-bottom: 2px solid var(--blue-400);
+    border-radius: 2px;
     margin: 1rem 0 1rem 0;
   }
 
@@ -38,9 +39,17 @@ mat-card {
     }
   }
 
-  mat-card-title {
-    color: var(--gray-100);
+  mat-card-header {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+
+    mat-card-title {
+      color: var(--gray-100);
+      font-size: 30px;
+    }
   }
+
 
   mat-card-subtitle {
     color: var(--gray-200);
