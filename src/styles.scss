@@ -51,7 +51,33 @@ h2 {
 
 button {
   cursor: pointer;
+
+  &:disabled {
+    cursor: default;
+  }
 }
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+// .custom-fiche {
+//   mat-dialog-container {
+//     background-color: white;
+//   }
+
+//   h1 {
+//     color: var(--gray-100);
+//   }
+
+//   mat-label {
+//     color: var(--gray-100);
+//   }
+
+//   button {
+//     color: var(--gray-100);
+//   }
+// }

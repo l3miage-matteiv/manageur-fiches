@@ -1,1 +1,31 @@
-<p>add-fiche works!</p>
+<h1 mat-dialog-title>Nouvelle Fiche de Renseignement</h1>
+<div mat-dialog-content>
+  <form [formGroup]="ficheForm">
+    <div formGroupName="fiche">
+      <div class="fields">
+
+        <mat-form-field>
+          <mat-label>E-Mail du Recruteur</mat-label>
+          <!-- <span matPrefix>D </span> -->
+          <input formControlName="recruiterEmail" id="recruiterEmail" matInput/>
+          <mat-error *ngIf="recruiterEmail?.errors?.required">Le E-Mail du recruteur est requis.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>E-Mail du Service RH</mat-label>
+          <input formControlName="hrServiceEmail" id="hrServiceEmail" matInput/>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>E-Mail de l'enseignant(e)</mat-label>
+          <input formControlName="teacherEmail" id="teacherEmail" matInput/>
+          <mat-error *ngIf="teacherEmail?.errors?.required">Le type est requis.</mat-error>
+        </mat-form-field>
+    </div>
+  </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)='closeWindow()'>Fermer</button>
+  <button [disabled]="ficheForm?.invalid" mat-button (click)="createNewFiche()">Créer</button>
+</div>

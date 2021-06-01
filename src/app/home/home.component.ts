@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { AddFicheComponent } from '../add-fiche/add-fiche.component';
 import { FicheComponent } from '../fiche/fiche.component';
 @Component({
   selector: 'home',
@@ -35,9 +37,19 @@ export class HomeComponent implements OnInit {
 
 ];
 
-  constructor() { }
+  constructor(private dialog: MatDialog) { }
 
   ngOnInit(): void {
+  }
+
+  addNewFiche() {
+    const dialogConfig = new MatDialogConfig();
+    // dialogConfig.data = {
+    //
+    // }
+    dialogConfig.width = '80%';
+    dialogConfig.panelClass = "custom-fiche";
+    const dialogRef =  this.dialog.open(AddFicheComponent, dialogConfig);
   }
 
 }
