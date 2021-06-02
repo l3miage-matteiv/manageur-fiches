@@ -1,6 +1,6 @@
 # ManageurFiches
 
-![Homepage](C:\Users\vinic\OneDrive\Documents\L3 - Semestre 6\Projet Substitution Stage\manageur-fiches\Mockups\Home Page.png)
+![Homepage](/Mockups/Home Page.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
