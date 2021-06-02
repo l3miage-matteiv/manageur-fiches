@@ -64,20 +64,32 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   border: 2px solid red;
 }
 
-// .custom-fiche {
-//   mat-dialog-container {
-//     background-color: white;
-//   }
+.custom-fiche {
+  mat-dialog-container {
+    background-color: var(--blue-600);
+  }
 
-//   h1 {
-//     color: var(--gray-100);
-//   }
+  h1 {
+    color: var(--gray-100);
+    font-size: 2rem;
+    text-align: center;
+  }
 
-//   mat-label {
-//     color: var(--gray-100);
-//   }
+  .fields[_ngcontent-jpv-c88] > *[_ngcontent-jpv-c88] {
+    width: 100%;
+    padding: 0 6rem 0 6rem;
+  }
 
-//   button {
-//     color: var(--gray-100);
-//   }
-// }
+  mat-dialog-actions {
+    padding: 1rem 0 1rem 0;
+    align-items: center;
+  }
+
+  // mat-label {
+  //   color: var(--gray-100);
+  // }
+
+  // button {
+  //   color: var(--gray-100);
+  // }
+}

@@ -1,9 +1,41 @@
-.fields > *{
-  width: 100%;
+h1 {
+  color: var(--gray-100);
+  font-size: 2.5rem;
+  margin: 2.5rem 0 3rem 0;
+  text-align: center;
+}
 
-  padding: 0 2rem 0 2rem;
+div.fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  > * {
+    background-color: var(--blue-400);
+    border-radius: 4rem;
+    width: 60%;
+    > * {
+      margin: 0 2rem 1rem 2rem;
+    }
+  }
+}
+
+div.mat-dialog-actions {
+  justify-content: center;
+  margin: 2rem 0 2rem 0;
+
+  button {
+    background: var(--red-800);
+    border-radius: 4rem;
+    color: var(--white);
+
+    &[disabled="true"] {
+      background: var(--red-400);
+      border-radius: 4rem;
+      color: var(--gray-100);
+    }
+  }
 }
 
 * mat-form-field {
-  margin-top: 1rem;
+  margin: 1rem;
 }

@@ -19,6 +19,7 @@ import { MatInputModule } from '@angular/material/input';
 import { HomeComponent } from './home/home.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { AddFicheComponent } from './add-fiche/add-fiche.component';
+import { CreateFicheComponent } from './create-fiche/create-fiche.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { AddFicheComponent } from './add-fiche/add-fiche.component';
     HeaderComponent,
     HomeComponent,
     FicheComponent,
-    AddFicheComponent
+    AddFicheComponent,
+    CreateFicheComponent
   ],
   imports: [
     BrowserModule,

@@ -13,6 +13,14 @@ export class AddFicheComponent {
 
   ficheForm = new FormGroup({
     fiche: new FormGroup({
+      raisonSociale: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
+      representantLegal: new FormControl('', [
+        Validators.required,
+        Validators.minLength(3)
+      ]),
       recruiterEmail: new FormControl('', [
         Validators.required,
         Validators.email
@@ -26,6 +34,14 @@ export class AddFicheComponent {
       ])
     })
   })
+
+  get raisonSociale() {
+    return this.ficheForm.get('fiche.raisonSociale');
+  }
+
+  get representantLegal() {
+    return this.ficheForm.get('fiche.representantLegal');
+  }
 
   get recruiterEmail() {
     return this.ficheForm.get('fiche.recruiterEmail');

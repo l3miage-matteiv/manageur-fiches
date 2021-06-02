@@ -5,8 +5,19 @@
       <div class="fields">
 
         <mat-form-field>
+          <mat-label>Raison Sociale</mat-label>
+          <input formControlName="raisonSociale" id="raisonSociale" matInput/>
+          <mat-error *ngIf="raisonSociale?.errors?.required">Le nom (Raison Sociale) de l'etablissement est requis.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Representant Legal</mat-label>
+          <input formControlName="representantLegal" id="representantLegal" matInput/>
+          <mat-error *ngIf="representantLegal?.errors?.required">Le nom et prenom du Representant Legal de l'etablissement sont requis.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
           <mat-label>E-Mail du Recruteur</mat-label>
-          <!-- <span matPrefix>D </span> -->
           <input formControlName="recruiterEmail" id="recruiterEmail" matInput/>
           <mat-error *ngIf="recruiterEmail?.errors?.required">Le E-Mail du recruteur est requis.</mat-error>
         </mat-form-field>
