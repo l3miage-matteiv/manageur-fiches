@@ -1,6 +1,6 @@
 # ManageurFiches
 
-![Homepage](/Mockups/Home Page.png)
+![Homepage](https://github.com/l3miage-matteiv/manageur-fiches/blob/main/Mockups/Home%20Page.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.4.
 
