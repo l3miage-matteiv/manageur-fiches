@@ -1,3 +1,9 @@
+import { Adresse } from "./Adresse";
+import { Enseignant } from "./Enseignant";
+import { Etudiant } from "./Etudiant";
+import { Recruteur } from "./Recruteur";
+import { ServiceRH } from "./ServiceRH";
+
 export interface FicheRenseignement {
   id: number;
   etudiant: Etudiant;

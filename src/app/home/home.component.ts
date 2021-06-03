@@ -7,7 +7,7 @@ import { FicheComponent } from '../fiche/fiche.component';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
   fiches: {companyName: string, recruiter:  string}[] = [
   {
@@ -39,15 +39,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private dialog: MatDialog) { }
 
-  ngOnInit(): void {
-  }
-
   addNewFiche() {
     const dialogConfig = new MatDialogConfig();
     // dialogConfig.data = {
     //
     // }
-    dialogConfig.width = '80%';
+    dialogConfig.width = '70%';
     dialogConfig.panelClass = "custom-fiche";
     const dialogRef =  this.dialog.open(AddFicheComponent, dialogConfig);
   }

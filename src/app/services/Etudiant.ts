@@ -1,4 +1,6 @@
-interface Etudiant extends Utilisateur {
+import { Utilisateur } from "./Utilisateur";
+
+export interface Etudiant extends Utilisateur {
   numeroEtudiant: number;
   typeAffiliation: string | 'Ayant droit' | 'Étudiant' | 'Assuré volontaire' | 'Étudiant étranger';
   caisseAssuranceMaladie: string | 'CPAM' | 'MSA' | 'Travailleur Indépendant' | 'Régimes Spéciaux';

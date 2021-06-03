@@ -1,4 +1,4 @@
-interface Adresse {
+export interface Adresse {
   adresse: string;
   codePostal: number;
   ville: string;

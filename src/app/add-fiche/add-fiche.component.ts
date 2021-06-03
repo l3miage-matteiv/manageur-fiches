@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { FicheRenseignement } from '../services/FicheRenseignement';
 
 @Component({
   selector: 'add-fiche',
@@ -8,6 +9,8 @@ import { MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./add-fiche.component.scss']
 })
 export class AddFicheComponent {
+
+  private fiche: FicheRenseignement | null = null;
 
   constructor(public dialogRef: MatDialogRef<AddFicheComponent>) { }
 

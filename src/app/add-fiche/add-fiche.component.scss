@@ -13,8 +13,17 @@ div.fields {
     background-color: var(--blue-400);
     border-radius: 4rem;
     width: 60%;
+    box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
     > * {
       margin: 0 2rem 1rem 2rem;
+    }
+    input {
+      color: var(--gray-100);
+      background: transparent;
+    }
+
+    mat-label {
+      color: var(--gray-100);
     }
   }
 }
@@ -26,12 +35,15 @@ div.mat-dialog-actions {
   button {
     background: var(--red-800);
     border-radius: 4rem;
+    width: 150px;
     color: var(--white);
+    box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
 
     &[disabled="true"] {
       background: var(--red-400);
       border-radius: 4rem;
       color: var(--gray-100);
+      box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
     }
   }
 }

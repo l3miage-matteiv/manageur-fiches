@@ -1,4 +1,6 @@
-interface Utilisateur {
+import { Adresse } from "./Adresse";
+
+export interface Utilisateur {
   id: number;
   nom: string;
   prenom: string;
