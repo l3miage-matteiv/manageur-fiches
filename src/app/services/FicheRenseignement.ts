@@ -1,17 +1,20 @@
 import { Adresse } from "./Adresse";
 import { Enseignant } from "./Enseignant";
 import { Etudiant } from "./Etudiant";
-import { Recruteur } from "./Recruteur";
+import { Tuteur } from "./Tuteur";
 import { ServiceRH } from "./ServiceRH";
 
 export interface FicheRenseignement {
   id: number;
   etudiant: Etudiant;
-  serviceRH: ServiceRH | Recruteur;
-  recruteurResponsable: Recruteur;
-  enseignant: Enseignant;
-  ficheAccueilStagiaire: FicheAccueilStagiaire;
-  ficheRecruteur: FicheRecruteur;
+  serviceRH: ServiceRH | Tuteur | undefined;
+  tuteur: Tuteur | undefined;
+  enseignant: Enseignant | undefined;
+  mailServiceRH: string;
+  mailTuteur: string;
+  mailEnseignant: string;
+  ficheAccueilStagiaire: FicheAccueilStagiaire | undefined;
+  ficheTuteur: FicheTuteur | undefined;
 }
 
 interface FicheAccueilStagiaire {
@@ -25,7 +28,7 @@ interface FicheAccueilStagiaire {
   adresseAccueilStagiaire: Adresse;
 }
 
-interface FicheRecruteur {
+interface FicheTuteur {
   disponibilite: 'Importante' | 'Partielle' | 'Inexistante';
   dateDebut: Date;
   dateFin: Date;
@@ -46,8 +49,4 @@ interface FicheRecruteur {
   descriptionProjet: string;
   objectifsStage: string;
   detailTravaux: string;
-}
-
-interface FicheEnseignant {
-
 }

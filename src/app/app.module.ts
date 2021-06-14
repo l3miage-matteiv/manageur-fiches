@@ -20,6 +20,10 @@ import { HomeComponent } from './home/home.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { AddFicheComponent } from './add-fiche/add-fiche.component';
 import { CreateFicheComponent } from './create-fiche/create-fiche.component';
+import { FichesService } from './services/fiches.service';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -44,9 +48,13 @@ import { CreateFicheComponent } from './create-fiche/create-fiche.component';
     MatCardModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [
+    FichesService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -6,6 +6,6 @@ export interface Utilisateur {
   prenom: string;
   tel: number;
   mail: string;
-  adresse: Adresse;
-  typeUtilisateur: 'Étudiant' | 'ServiceRH' | 'Recruteur' | 'Enseignant';
+  adresse: Adresse | undefined;
+  typeUtilisateur: 'Étudiant' | 'ServiceRH' | 'Tuteur' | 'Enseignant' | undefined;
 }
