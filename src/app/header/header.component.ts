@@ -20,7 +20,7 @@ export class HeaderComponent {
     this.user$ = auth.authState;
     this.user$
       .subscribe(user => {
-        console.log(user?.displayName);
+        console.log(user);
       })
   }
 

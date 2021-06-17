@@ -1,11 +1,12 @@
-import { Adresse } from "./Adresse";
-
 export interface Utilisateur {
   id: number;
   nom: string;
   prenom: string;
   tel: number;
   mail: string;
-  adresse: Adresse | undefined;
-  typeUtilisateur: 'Étudiant' | 'ServiceRH' | 'Tuteur' | 'Enseignant' | undefined;
+  adresse: string;
+  codePostal: string;
+  ville: string;
+  pays: string | 'France';
+  typeUtilisateur: 'Étudiant' | 'ServiceRH' | 'Tuteur' | 'Enseignant' | null;
 }

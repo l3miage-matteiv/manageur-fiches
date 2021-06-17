@@ -1,6 +1,6 @@
 export interface Adresse {
   adresse: string;
-  codePostal: number;
+  codePostal: string;
   ville: string;
   pays: string | 'France';
 }

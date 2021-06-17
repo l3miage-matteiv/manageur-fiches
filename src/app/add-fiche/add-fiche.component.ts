@@ -71,12 +71,10 @@ export class AddFicheComponent {
       prenom: 'Vinicius',
       tel: 788971741,
       mail: 'viniciuspmattei@gmail.com',
-      adresse: {
-        adresse: '1015 Avenue des Jeux Olympiques',
-        codePostal: 38100,
-        ville: 'Grenoble',
-        pays: 'France'
-      },
+      adresse: '1015 Avenue des Jeux Olympiques',
+      codePostal: "38100",
+      ville: 'Grenoble',
+      pays: 'France',
       numeroEtudiant: 11715704,
       typeAffiliation: 'Étudiant',
       caisseAssuranceMaladie: 'CPAM',

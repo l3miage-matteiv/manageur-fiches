@@ -24,6 +24,9 @@ import { FichesService } from './services/fiches.service';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { RegisterPageComponent } from './register-page/register-page.component';
+import { UtilisateursService } from './services/utilisateurs.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -32,7 +35,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     HomeComponent,
     FicheComponent,
     AddFicheComponent,
-    CreateFicheComponent
+    CreateFicheComponent,
+    RegisterPageComponent
   ],
   imports: [
     BrowserModule,
@@ -50,10 +54,12 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     MatFormFieldModule,
     MatInputModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    HttpClientModule
   ],
   providers: [
-    FichesService
+    FichesService,
+    UtilisateursService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,39 @@
+<form [formGroup]="registerForm">
+    <div class="fields">
+
+      <mat-form-field>
+        <mat-label>Télephone</mat-label>
+        <input formControlName="telephone" id="telephone" matInput/>
+        <mat-error *ngIf="telephone?.errors?.required">Ce champ est requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Adresse</mat-label>
+        <input formControlName="adresse" id="adresse" matInput/>
+        <mat-error *ngIf="adresse?.errors?.required">Ce champ est requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Code Postal</mat-label>
+        <input formControlName="codePostal" id="codePostal" matInput/>
+        <mat-error *ngIf="codePostal?.errors?.required">Ce champ est requis.</mat-error>
+        <mat-error *ngIf="codePostal?.errors?.minlength">Le Code Postal est composé de 5 nombres.</mat-error>
+        <mat-error *ngIf="codePostal?.errors?.maxlength">Le Code Postal est composé de 5 nombres.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Ville</mat-label>
+        <input formControlName="ville" id="ville" matInput/>
+        <mat-error *ngIf="ville?.errors?.required">Ce champ est requis.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Pays</mat-label>
+        <input formControlName="pays" id="pays" matInput/>
+        <mat-error *ngIf="pays?.errors?.required">Ce champ est requis.</mat-error>
+      </mat-form-field>
+  </div>
+</form>
+<div>
+  <button [disabled]="registerForm?.invalid" mat-button (click)="register()">Créer</button>
+</div>
