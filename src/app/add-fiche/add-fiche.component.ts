@@ -4,6 +4,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 import { FicheComponent } from '../fiche/fiche.component';
 import { Etudiant } from '../services/Etudiant';
 import { Fiche } from '../services/Fiche';
+import { FicheRenseignementService } from '../services/fiche-renseignement.service';
 import { FicheRenseignement } from '../services/FicheRenseignement';
 import { FichesService } from '../services/fiches.service';
 
@@ -17,8 +18,16 @@ export class AddFicheComponent {
   private ficheRenseignement: FicheRenseignement | null = null;
   private ficheAffichage: Fiche | null = null;
 
+  public lastFicheRenseignement!: FicheRenseignement;
+
   constructor(public dialogRef: MatDialogRef<AddFicheComponent>,
-              private fichesService: FichesService) { }
+              private fichesService: FichesService,
+              private ficheRenseignementService: FicheRenseignementService) {
+    this.ficheRenseignementService.getLastFiche()
+      .subscribe(fiche => {
+        this.lastFicheRenseignement = fiche;
+      })
+  }
 
   ficheForm = new FormGroup({
     fiche: new FormGroup({
@@ -85,17 +94,17 @@ export class AddFicheComponent {
 
     // creer fiche de renseignement
 
-    this.ficheRenseignement= {
-      id: 0,
+    this.ficheRenseignement = {
+      id: this.lastFicheRenseignement?.id + 1,
       etudiant: etu,
       mailServiceRH: this.hrServiceEmail?.value,
       mailTuteur: this.recruiterEmail?.value,
       mailEnseignant: this.teacherEmail?.value,
-      serviceRH: undefined,
-      tuteur: undefined,
-      enseignant: undefined,
-      ficheAccueilStagiaire: undefined,
-      ficheTuteur: undefined
+      serviceRH: null,
+      tuteur: null,
+      enseignant: null,
+      ficheAccueilStagiaire: null,
+      ficheTuteur: null
     };
 
     // notifier serviceRH, tuteur et enseignant par mail de la creation de la fiche
@@ -107,7 +116,9 @@ export class AddFicheComponent {
       progress: "En Cours de Traitement"
     };
     this.fichesService.addFiche(this.ficheAffichage);
-    // amener l'utilisateur a la remplissage de la fichede renseignement
+
+    // amener l'utilisateur a la remplissage de la fiche de renseignement
+
 
     // this.defiService.addDefis(this!.defis).subscribe(defi => console.log(defi));
     // this.motsClesService.addMotsCles(this!.motsCles).subscribe(motcles => console.log(motcles));

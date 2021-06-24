@@ -1,4 +1,64 @@
-div.fields {
+div.register-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  height: 46rem;
+  margin: 4rem 8rem 4rem 8rem;
+  padding: 4rem;
+  background-color: var(--blue-600);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.16);
+  border-radius: 6px;
+
+  h1 {
+    color: var(--gray-100);
+    font-size: 2.5rem;
+  }
+
+  div.fields {
+    display: flex;
+    flex-direction: column;
+
+    // border: 2px solid yellow;
+    > * {
+      background-color: var(--blue-400);
+      border-radius: 4rem;
+      box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
+      > * {
+        // margin: 0 2rem 1rem 2rem;
+      }
+      input {
+        color: var(--gray-100);
+        background: transparent;
+      }
+
+      mat-label {
+        color: var(--gray-100);
+      }
+    }
+  }
+
+  div.mat-dialog-actions {
+    justify-content: center;
+    margin: 4rem;
+
+    button {
+      background: var(--red-800);
+      border-radius: 4rem;
+      width: 150px;
+      color: var(--white);
+      box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
+
+      &[disabled="true"] {
+        background: var(--red-400);
+        border-radius: 4rem;
+        color: var(--gray-100);
+        box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
+      }
+    }
+  }
+
+  * mat-form-field {
+    margin: 1rem;
+  }
 }

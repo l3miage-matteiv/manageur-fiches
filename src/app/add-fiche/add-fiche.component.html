@@ -38,5 +38,8 @@
 </div>
 <div mat-dialog-actions>
   <button mat-button (click)='closeWindow()'>Fermer</button>
-  <button [disabled]="ficheForm?.invalid" mat-button (click)="createNewFiche()">Créer</button>
+  <button [disabled]="ficheForm?.invalid"
+          mat-button
+          (click)="createNewFiche()"
+          [routerLink]="['fiche_renseignement, ficheRenseignement.id']">Créer</button>
 </div>

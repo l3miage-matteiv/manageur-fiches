@@ -27,6 +27,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { UtilisateursService } from './services/utilisateurs.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { HttpClientModule } from '@angular/common/http';
     FicheComponent,
     AddFicheComponent,
     CreateFicheComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
@@ -59,7 +62,8 @@ import { HttpClientModule } from '@angular/common/http';
   ],
   providers: [
     FichesService,
-    UtilisateursService
+    UtilisateursService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })

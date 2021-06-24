@@ -4,30 +4,30 @@
     <span class="diplay-title">MANAGEUR FICHES</span>
   </div>
   <div class="account">
-    <label *ngIf="isLoggedIn() | async as user">
+    <label *ngIf="userAuthService.isLoggedIn() | async as user">
       <span class="display-name">{{user.displayName}}</span>
     </label>
-    <mat-icon mat-button [matMenuTriggerFor]="menuRef">
+    <!-- <mat-icon mat-button [matMenuTriggerFor]="menuRef">
         account_circle
-    </mat-icon>
+    </mat-icon> -->
 
-    <mat-menu #menuRef="matMenu">
-      <button *ngIf="isLoggedIn() | async as user; else anonymousUser"
+    <!-- <mat-menu #menuRef="matMenu">
+      <button *ngIf="userAuthService.isLoggedIn() | async as user; else anonymousUser"
               mat-menu-item
-              (click)="logout()"
+              (click)="userAuthService.logout()"
       >
         <mat-icon>logout</mat-icon>
         <span>Déconnexion</span>
       </button>
       <ng-template #anonymousUser>
         <button mat-menu-item
-                (click)="login()"
+                (click)="userAuthService.login()"
         >
           <img [src]="dataIconGoogle" width="24" height="24"/>
           &nbsp;
-          <span>Compte Google</span>
+          <span routerLink="/register_page">Connexion</span>
         </button>
       </ng-template>
-    </mat-menu>
+    </mat-menu> -->
   </div>
 </header>

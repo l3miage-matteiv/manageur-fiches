@@ -7,14 +7,14 @@ import { ServiceRH } from "./ServiceRH";
 export interface FicheRenseignement {
   id: number;
   etudiant: Etudiant;
-  serviceRH: ServiceRH | Tuteur | undefined;
-  tuteur: Tuteur | undefined;
-  enseignant: Enseignant | undefined;
+  serviceRH: ServiceRH | Tuteur | null;
+  tuteur: Tuteur | null;
+  enseignant: Enseignant | null;
   mailServiceRH: string;
   mailTuteur: string;
   mailEnseignant: string;
-  ficheAccueilStagiaire: FicheAccueilStagiaire | undefined;
-  ficheTuteur: FicheTuteur | undefined;
+  ficheAccueilStagiaire: FicheAccueilStagiaire | null;
+  ficheTuteur: FicheTuteur | null;
 }
 
 interface FicheAccueilStagiaire {

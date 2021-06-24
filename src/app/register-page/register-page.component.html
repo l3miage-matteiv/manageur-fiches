@@ -1,10 +1,16 @@
-<form [formGroup]="registerForm">
-    <div class="fields">
-
+<div class="register-form">
+  <button (click)="userFireAuth.login()">
+    <img [src]="dataIconGoogle" width="24" height="24"/>
+    &nbsp;
+    <span>Connexion Google</span>
+  </button>
+  <form [formGroup]="registerForm" *ngIf="userFireAuth.isLoggedIn() | async">
+    <h1>Créer Votre Compte</h1>
+    <div class="fields" >
       <mat-form-field>
-        <mat-label>Télephone</mat-label>
-        <input formControlName="telephone" id="telephone" matInput/>
-        <mat-error *ngIf="telephone?.errors?.required">Ce champ est requis.</mat-error>
+          <mat-label>Télephone</mat-label>
+          <input formControlName="telephone" id="telephone" matInput/>
+          <mat-error *ngIf="telephone?.errors?.required">Ce champ est requis.</mat-error>
       </mat-form-field>
 
       <mat-form-field>
@@ -32,8 +38,9 @@
         <input formControlName="pays" id="pays" matInput/>
         <mat-error *ngIf="pays?.errors?.required">Ce champ est requis.</mat-error>
       </mat-form-field>
+    </div>
+  </form>
+  <div class="mat-dialog-actions" *ngIf="userFireAuth.isLoggedIn() | async">
+    <button [disabled]="registerForm?.invalid" mat-button (click)="register()">Créer</button>
   </div>
-</form>
-<div>
-  <button [disabled]="registerForm?.invalid" mat-button (click)="register()">Créer</button>
 </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { AuthService } from '../services/auth.service';
 import { Utilisateur } from '../services/Utilisateur';
 import { UtilisateursService } from '../services/utilisateurs.service';
 
@@ -11,16 +12,18 @@ import { UtilisateursService } from '../services/utilisateurs.service';
 })
 export class RegisterPageComponent  {
 
-  lastUtilisateurAdded$: Observable<Utilisateur>;
+  dataIconGoogle = 'assets/images/iconGoogle.png';
+
   lastUtilisateurAdded!: Utilisateur;
 
-  constructor(private utilisateurService: UtilisateursService) {
-    this.lastUtilisateurAdded$ = utilisateurService.getLastUtilisateur();
-    this.lastUtilisateurAdded$
+  constructor(private utilisateurService: UtilisateursService,
+              public userFireAuth: AuthService) {
+    utilisateurService.getLastUtilisateur()
       .subscribe(user => {
         this.lastUtilisateurAdded = user;
         console.log(this.lastUtilisateurAdded);
       })
+      .unsubscribe()
   }
 
   registerForm = new FormGroup({
