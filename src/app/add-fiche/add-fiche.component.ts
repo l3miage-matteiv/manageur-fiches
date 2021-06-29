@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 import { FicheComponent } from '../fiche/fiche.component';
 import { Etudiant } from '../services/Etudiant';
 import { Fiche } from '../services/Fiche';
@@ -15,10 +16,11 @@ import { FichesService } from '../services/fiches.service';
 })
 export class AddFicheComponent {
 
-  private ficheRenseignement: FicheRenseignement | null = null;
-  private ficheAffichage: Fiche | null = null;
+  public ficheRenseignement$!: Observable<FicheRenseignement>;
+  public ficheRenseignement!: FicheRenseignement;
 
   public lastFicheRenseignement!: FicheRenseignement;
+  public nextFicheID!: number;
 
   constructor(public dialogRef: MatDialogRef<AddFicheComponent>,
               private fichesService: FichesService,
@@ -26,6 +28,7 @@ export class AddFicheComponent {
     this.ficheRenseignementService.getLastFiche()
       .subscribe(fiche => {
         this.lastFicheRenseignement = fiche;
+        this.nextFicheID = fiche.id + 1;
       })
   }
 
@@ -78,7 +81,7 @@ export class AddFicheComponent {
       id: 0,
       nom: 'Mattei',
       prenom: 'Vinicius',
-      tel: 788971741,
+      tel: '788971741',
       mail: 'viniciuspmattei@gmail.com',
       adresse: '1015 Avenue des Jeux Olympiques',
       codePostal: "38100",
@@ -95,35 +98,32 @@ export class AddFicheComponent {
     // creer fiche de renseignement
 
     this.ficheRenseignement = {
-      id: this.lastFicheRenseignement?.id + 1,
-      etudiant: etu,
+      id: this.nextFicheID,
+      idetudiant: etu.id,
       mailServiceRH: this.hrServiceEmail?.value,
       mailTuteur: this.recruiterEmail?.value,
       mailEnseignant: this.teacherEmail?.value,
-      serviceRH: null,
-      tuteur: null,
-      enseignant: null,
-      ficheAccueilStagiaire: null,
-      ficheTuteur: null
+      idserviceRH: 3,
+      idtuteur: 2,
+      idenseignant: 1,
+      idficheAccueilStagiaire: 0,
+      idficheTuteur: 0,
+      raisonSociale: this.raisonSociale?.value,
+      representantLegal: this.representantLegal?.value,
+      progres: "En Cours de Traitement"
     };
 
     // notifier serviceRH, tuteur et enseignant par mail de la creation de la fiche
 
-    // ajouter et afficher une fiche dans l'accueil
-    this.ficheAffichage = {
-      raisonSociale: this.raisonSociale?.value,
-      representantLegal: this.representantLegal?.value,
-      progress: "En Cours de Traitement"
-    };
-    this.fichesService.addFiche(this.ficheAffichage);
+    this.ficheRenseignement$ = this.ficheRenseignementService.addFiche(this.ficheRenseignement);
+    this.ficheRenseignement$
+      .subscribe(fiche => {
+        console.log(fiche);
+      });
+      this.dialogRef.close();
 
     // amener l'utilisateur a la remplissage de la fiche de renseignement
 
-
-    // this.defiService.addDefis(this!.defis).subscribe(defi => console.log(defi));
-    // this.motsClesService.addMotsCles(this!.motsCles).subscribe(motcles => console.log(motcles));
-    console.log("New Fiche Added!")
-    this.dialogRef.close();
   }
 
   closeWindow(): void {

@@ -29,6 +29,7 @@ import { UtilisateursService } from './services/utilisateurs.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthService } from './services/auth.service';
+import { UtilisateurPipe } from './services/utilisateur.pipe';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { AuthService } from './services/auth.service';
     AddFicheComponent,
     CreateFicheComponent,
     RegisterPageComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    UtilisateurPipe
   ],
   imports: [
     BrowserModule,

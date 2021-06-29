@@ -6,15 +6,24 @@ import { ServiceRH } from "./ServiceRH";
 
 export interface FicheRenseignement {
   id: number;
-  etudiant: Etudiant;
-  serviceRH: ServiceRH | Tuteur | null;
-  tuteur: Tuteur | null;
-  enseignant: Enseignant | null;
+  idetudiant: number;
+  idserviceRH: number;
+  idtuteur: number;
+  idenseignant: number;
+  // etudiant: Etudiant;
+  // serviceRH: ServiceRH | Tuteur | null;
+  // tuteur: Tuteur | null;
+  // enseignant: Enseignant | null;
   mailServiceRH: string;
   mailTuteur: string;
   mailEnseignant: string;
-  ficheAccueilStagiaire: FicheAccueilStagiaire | null;
-  ficheTuteur: FicheTuteur | null;
+  idficheAccueilStagiaire: number;
+  idficheTuteur: number;
+  // ficheAccueilStagiaire: FicheAccueilStagiaire | null;
+  // ficheTuteur: FicheTuteur | null;
+  raisonSociale: string;
+  representantLegal: string;
+  progres: "En Cours de Traitement" | "Validé" | "Invalidé";
 }
 
 interface FicheAccueilStagiaire {

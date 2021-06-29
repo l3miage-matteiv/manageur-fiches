@@ -22,6 +22,10 @@ export class UtilisateursService {
     return this.http.get<Utilisateur>(`${this.apiServerUrl}/utilisateur/${idUtilisateur}`);
   }
 
+  getUtilisateurByMail(mailUtilisateur: string | null | undefined): Observable<Utilisateur | null> {
+    return this.http.get<Utilisateur>(`${this.apiServerUrl}/utilisateur/mail/${mailUtilisateur}`);
+  }
+
   getLastUtilisateur(): Observable<Utilisateur> {
     return this.http.get<Utilisateur>(`${this.apiServerUrl}/utilisateur/last_utilisateur`);
   }

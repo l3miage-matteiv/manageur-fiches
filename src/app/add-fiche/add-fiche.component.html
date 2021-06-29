@@ -3,7 +3,6 @@
   <form [formGroup]="ficheForm">
     <div formGroupName="fiche">
       <div class="fields">
-
         <mat-form-field>
           <mat-label>Raison Sociale</mat-label>
           <input formControlName="raisonSociale" id="raisonSociale" matInput/>
@@ -32,8 +31,8 @@
           <input formControlName="teacherEmail" id="teacherEmail" matInput/>
           <mat-error *ngIf="teacherEmail?.errors?.required">Le type est requis.</mat-error>
         </mat-form-field>
+      </div>
     </div>
-  </div>
   </form>
 </div>
 <div mat-dialog-actions>
@@ -41,5 +40,5 @@
   <button [disabled]="ficheForm?.invalid"
           mat-button
           (click)="createNewFiche()"
-          [routerLink]="['fiche_renseignement, ficheRenseignement.id']">Créer</button>
+          [routerLink]="['/fiche_renseignement', nextFicheID]">Créer</button>
 </div>

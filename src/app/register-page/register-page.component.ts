@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
+import firebase from 'firebase';
 import { AuthService } from '../services/auth.service';
 import { Utilisateur } from '../services/Utilisateur';
 import { UtilisateursService } from '../services/utilisateurs.service';
@@ -10,20 +11,22 @@ import { UtilisateursService } from '../services/utilisateurs.service';
   templateUrl: './register-page.component.html',
   styleUrls: ['./register-page.component.scss']
 })
-export class RegisterPageComponent  {
+export class RegisterPageComponent implements OnInit {
 
   dataIconGoogle = 'assets/images/iconGoogle.png';
 
+  currentUser!: firebase.User | null;
+  currentUtilisateur$!: Observable<Utilisateur | null>;
+  currentUtilisateur!: Utilisateur | null;
   lastUtilisateurAdded!: Utilisateur;
 
-  constructor(private utilisateurService: UtilisateursService,
-              public userFireAuth: AuthService) {
-    utilisateurService.getLastUtilisateur()
-      .subscribe(user => {
-        this.lastUtilisateurAdded = user;
-        console.log(this.lastUtilisateurAdded);
-      })
-      .unsubscribe()
+  constructor(private utilisateurService: UtilisateursService, public userAuthService: AuthService) {}
+
+  ngOnInit() {
+    this.userAuthService.currentUser$.subscribe(user => this.currentUser = user);
+    this.currentUtilisateur$ = this.utilisateurService.getUtilisateurByMail(this.currentUser?.email);
+    this.currentUtilisateur$.subscribe(utilisateur => this.currentUtilisateur = utilisateur);
+    this.utilisateurService.getLastUtilisateur().subscribe(user => this.lastUtilisateurAdded = user);
   }
 
   registerForm = new FormGroup({
@@ -70,6 +73,7 @@ export class RegisterPageComponent  {
   }
 
   register() {
+
     const utilisateur: Utilisateur = {
       id: this.lastUtilisateurAdded?.id + 1,
       nom: 'Mattei',

@@ -10,31 +10,31 @@ export class FichesService {
     {
       raisonSociale: "Orange",
       representantLegal: "Lula",
-      progress: 'Invalidé'
+      progres: 'Invalidé'
     }
     ,
     {
       raisonSociale: "Hardis",
       representantLegal: "Burrossauro",
-      progress: 'En Cours de Traitement'
+      progres: 'En Cours de Traitement'
     }
     ,
     {
       raisonSociale: "Capgemini",
       representantLegal: "Nicolas Sarcozi",
-      progress: 'En Cours de Traitement'
+      progres: 'En Cours de Traitement'
     }
     ,
     {
       raisonSociale: "Hardis",
       representantLegal: "Burrossauro",
-      progress: 'Validé'
+      progres: 'Validé'
     }
     ,
     {
       raisonSociale: "Hardis",
       representantLegal: "Burrossauro",
-      progress: 'En Cours de Traitement'
+      progres: 'En Cours de Traitement'
     }
   ];
 

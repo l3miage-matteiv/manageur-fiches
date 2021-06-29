@@ -1,12 +1,10 @@
 <div class="register-form">
-  <button (click)="userFireAuth.login()">
-    <img [src]="dataIconGoogle" width="24" height="24"/>
-    &nbsp;
-    <span>Connexion Google</span>
+  <h1>Connexion Google</h1>
+  <button (click)="userAuthService.login(); register()">
+    <img [src]="dataIconGoogle" width="48" height="48"/>
   </button>
-  <form [formGroup]="registerForm" *ngIf="userFireAuth.isLoggedIn() | async">
-    <h1>Créer Votre Compte</h1>
-    <div class="fields" >
+  <form [formGroup]="registerForm" *ngIf="currentUser">
+    <!-- <div class="fields" >
       <mat-form-field>
           <mat-label>Télephone</mat-label>
           <input formControlName="telephone" id="telephone" matInput/>
@@ -38,9 +36,9 @@
         <input formControlName="pays" id="pays" matInput/>
         <mat-error *ngIf="pays?.errors?.required">Ce champ est requis.</mat-error>
       </mat-form-field>
-    </div>
+    </div> -->
   </form>
-  <div class="mat-dialog-actions" *ngIf="userFireAuth.isLoggedIn() | async">
+  <!-- <div class="mat-dialog-actions" *ngIf="userFireAuth.getLoggedUser() | async">
     <button [disabled]="registerForm?.invalid" mat-button (click)="register()">Créer</button>
-  </div>
+  </div> -->
 </div>

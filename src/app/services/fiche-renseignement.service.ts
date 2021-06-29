@@ -25,6 +25,7 @@ export class FicheRenseignementService {
   }
 
   addFiche(fiche: FicheRenseignement): Observable<FicheRenseignement> {
+    console.log(`${this.apiServerUrl}/fiche_renseignement/add/${fiche.id}`);
     return this.http.post<FicheRenseignement>(`${this.apiServerUrl}/fiche_renseignement/add/${fiche.id}`, fiche);
   }
 
