@@ -1,0 +1,28 @@
+<div class="login">
+  <h1>Connexion Google</h1>
+  <!-- <form [formGroup]="loginForm" *ngIf="(userAuthService.getLoggedUser() | async) == null">
+    <div class="fields" >
+      <mat-form-field>
+        <mat-label>E-Mail</mat-label>
+        <input formControlName="mail" id="mail" matInput type="email"/>
+        <mat-error *ngIf="mail?.errors?.required">Ce champ est requis.</mat-error>
+        <mat-error *ngIf="mail?.errors?.email">Ceci n'est pas un e-mail correcte.</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Mot de Passe</mat-label>
+        <input formControlName="password" id="password" matInput type="password"/>
+        <mat-error *ngIf="password?.errors?.required">Ce champ est requis.</mat-error>
+      </mat-form-field>
+    </div>
+  </form> -->
+  <!-- <div class="mat-dialog-actions" *ngIf="!(userAuthService.getLoggedUser() | async)">
+    <button [disabled]="loginForm?.invalid" mat-button (click)="userAuthService.login(mail?.value, password?.value)">Connexion</button>
+  </div> -->
+  <button *ngIf="!(userAuthService.getLoggedUser() | async)" (click)="userAuthService.login()">
+    <img [src]="dataIconGoogle" width="48" height="48"/>
+  </button>
+  <button *ngIf="(userAuthService.getLoggedUser() | async)" (click)="userAuthService.logout()">
+    <span>Deconnexion</span>
+  </button>
+</div>

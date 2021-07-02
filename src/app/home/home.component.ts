@@ -3,8 +3,10 @@ import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { AddFicheComponent } from '../add-fiche/add-fiche.component';
 import { FicheComponent } from '../fiche/fiche.component';
+import { AuthService } from '../services/auth.service';
 import { FicheRenseignementService } from '../services/fiche-renseignement.service';
 import { FicheRenseignement } from '../services/FicheRenseignement';
+import { Utilisateur } from '../services/Utilisateur';
 
 @Component({
   selector: 'home',
@@ -14,15 +16,18 @@ import { FicheRenseignement } from '../services/FicheRenseignement';
 export class HomeComponent {
 
   fiches$: Observable<FicheRenseignement[]>;
+  currentUtilisateur$!: Observable<Utilisateur | null>;
 
   constructor(private dialog: MatDialog,
-              public fichesService: FicheRenseignementService)
+              public fichesService: FicheRenseignementService,
+              private authService: AuthService)
   {
     this.fiches$ = fichesService.getAllFiches();
     this.fiches$
       .subscribe(fiches => {
         console.log(fiches);
       })
+    this.currentUtilisateur$ = authService.getLoggedUtilisateur();
   }
 
   addNewFiche() {

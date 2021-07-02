@@ -25,69 +25,27 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit() {
     this.userAuthService.currentUser$.subscribe(user => this.currentUser = user);
     this.currentUtilisateur$ = this.utilisateurService.getUtilisateurByMail(this.currentUser?.email);
-    this.currentUtilisateur$.subscribe(utilisateur => this.currentUtilisateur = utilisateur);
     this.utilisateurService.getLastUtilisateur().subscribe(user => this.lastUtilisateurAdded = user);
   }
 
-  registerForm = new FormGroup({
-    telephone: new FormControl('', [
-      Validators.required
-    ]),
-    adresse: new FormControl('', [
-      Validators.required,
-      Validators.minLength(3)
-    ]),
-    codePostal: new FormControl('', [
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(5)
-    ]),
-    ville : new FormControl('', [
-      Validators.required,
-      Validators.minLength(3)
-    ]),
-    pays : new FormControl('', [
-      Validators.required,
-      Validators.minLength(3)
-    ])
-  })
-
-  get telephone() {
-    return this.registerForm.get('telephone');
-  }
-
-  get adresse() {
-    return this.registerForm.get('adresse');
-  }
-
-  get codePostal() {
-    return this.registerForm.get('codePostal');
-  }
-
-  get ville() {
-    return this.registerForm.get('ville');
-  }
-
-  get pays() {
-    return this.registerForm.get('pays');
-  }
+  typeUtilisateurForm = new FormControl();
 
   register() {
 
-    const utilisateur: Utilisateur = {
-      id: this.lastUtilisateurAdded?.id + 1,
-      nom: 'Mattei',
-      prenom: 'Vinicius',
-      tel: this.telephone?.value,
-      mail: 'viniciuspmattei@gmail.com',
-      adresse: this.adresse?.value,
-      codePostal: this.codePostal?.value,
-      ville: this.ville?.value,
-      pays: this.pays?.value,
-      typeUtilisateur: null
-    }
+    // const utilisateur: Utilisateur = {
+    //   id: this.lastUtilisateurAdded?.id + 1,
+    //   nom: 'Mattei',
+    //   prenom: 'Vinicius',
+    //   tel: this.telephone?.value,
+    //   mail: 'viniciuspmattei@gmail.com',
+    //   adresse: this.adresse?.value,
+    //   codePostal: this.codePostal?.value,
+    //   ville: this.ville?.value,
+    //   pays: this.pays?.value,
+    //   typeUtilisateur: "Utilisateur"
+    // }
 
-    this.utilisateurService.addUtilisateur(utilisateur);
+    // this.utilisateurService.addUtilisateur(utilisateur);
     console.log("nouveau utilisateur cree!");
   }
 }

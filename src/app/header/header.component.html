@@ -4,30 +4,31 @@
     <span class="diplay-title">MANAGEUR FICHES</span>
   </div>
   <div class="account">
-    <label *ngIf="currentUser">
-      <span class="display-name">{{currentUser.displayName}}</span>
+    <label *ngIf="authService.getLoggedUser()">
+      <span class="display-name">{{(authService.getLoggedUtilisateur() | async)?.prenom}} {{(authService.getLoggedUtilisateur() | async)?.nom}}</span>
     </label>
-    <!-- <mat-icon mat-button [matMenuTriggerFor]="menuRef">
+    <mat-icon mat-button [matMenuTriggerFor]="menuRef">
         account_circle
-    </mat-icon> -->
+    </mat-icon>
 
-    <!-- <mat-menu #menuRef="matMenu">
-      <button *ngIf="userAuthService.isLoggedIn() | async as user; else anonymousUser"
+    <mat-menu #menuRef="matMenu">
+      <button *ngIf="authService.getLoggedUser() | async as user; else anonymousUser"
               mat-menu-item
-              (click)="userAuthService.logout()"
+              (click)="authService.logout()"
       >
         <mat-icon>logout</mat-icon>
         <span>Déconnexion</span>
       </button>
       <ng-template #anonymousUser>
-        <button mat-menu-item
-                (click)="userAuthService.login()"
+        <button
+          mat-menu-item
+          (click)="authService.login()"
         >
           <img [src]="dataIconGoogle" width="24" height="24"/>
           &nbsp;
-          <span routerLink="/register_page">Connexion</span>
+          <span>Connexion</span>
         </button>
       </ng-template>
-    </mat-menu> -->
+    </mat-menu>
   </div>
 </header>

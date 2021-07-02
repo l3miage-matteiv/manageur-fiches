@@ -8,5 +8,5 @@ export interface Utilisateur {
   codePostal: string | null;
   ville: string | null;
   pays: string | 'France' | null;
-  typeUtilisateur: 'Étudiant' | 'ServiceRH' | 'Tuteur' | 'Enseignant' | null;
+  typeUtilisateur: 'Étudiant' | 'ServiceRH' | 'Tuteur' | 'Enseignant' | 'Utilisateur';
 }

@@ -5,7 +5,8 @@ div.register-form {
   justify-content: space-between;
 
   height: 46rem;
-  margin: 4rem 8rem 4rem 8rem;
+  min-width: 650px;
+  margin: 4rem 25% 4rem 25%;
   padding: 4rem;
   background-color: var(--blue-600);
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.16);
@@ -20,32 +21,46 @@ div.register-form {
     font-size: 2.5rem;
   }
 
-  div.fields {
-    display: flex;
-    flex-direction: column;
+  mat-button-toggle-group {
+    padding: 6rem 1rem 6rem 1rem;
+    border: 0px;
+    width: 100%;
 
-    // border: 2px solid yellow;
-    > * {
-      background-color: var(--blue-400);
-      border-radius: 4rem;
-      box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
+    div.buttons {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
+
+      mat-button-toggle {
+        // margin: 0 2rem 0 2rem;
+        &.mat-button-toggle-checked {
+          background-color: var(--red-600);
+        }
+      }
+
+
       > * {
-        // margin: 0 2rem 1rem 2rem;
-      }
-      input {
-        color: var(--gray-100);
-        background: transparent;
-      }
+        background-color: var(--blue-400);
+        box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
+        border-radius: 4rem;
+        > * {
+          // margin: 0 2rem 1rem 2rem;
+        }
+        input {
+          color: var(--gray-100);
+          background: transparent;
+        }
 
-      mat-label {
-        color: var(--gray-100);
+        mat-label {
+          color: var(--gray-100);
+        }
       }
     }
   }
 
   div.mat-dialog-actions {
     justify-content: center;
-    margin: 4rem;
 
     button {
       background: var(--red-800);

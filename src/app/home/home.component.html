@@ -1,8 +1,13 @@
 <div>
   <h1>Fiches de Renseignement</h1>
-  <button mat-mini-fab (click)="addNewFiche()" aria-label="Creation defis">
+  <button *ngIf="(currentUtilisateur$ | async)?.typeUtilisateur == 'Étudiant' as etudiant; else nonEtudiant" mat-mini-fab (click)="addNewFiche()" aria-label="Creation Fiche">
     <mat-icon>add</mat-icon>
   </button>
+  <ng-template #nonEtudiant>
+    <button mat-mini-fab [routerLink]="'/register_page'" aria-label="Creation Fiche">
+      <mat-icon>add</mat-icon>
+    </button>
+  </ng-template>
 </div>
 <mat-grid-list cols="2" rowHeight="3:1">
   <mat-grid-tile *ngFor="let fiche of (fiches$ | async)">

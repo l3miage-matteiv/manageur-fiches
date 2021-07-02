@@ -23,6 +23,7 @@ header {
     &.title {
       display: flex;
       align-items: center;
+
       img {
         height: 4rem;
         cursor: pointer;
@@ -53,4 +54,9 @@ header {
       }
     }
   }
+}
+
+button[mat-menu-item] {
+  display: flex;
+  align-items: center;
 }

@@ -16,6 +16,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { HomeComponent } from './home/home.component';
 import { FicheComponent } from './fiche/fiche.component';
 import { AddFicheComponent } from './add-fiche/add-fiche.component';
@@ -30,6 +31,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthService } from './services/auth.service';
 import { UtilisateurPipe } from './services/utilisateur.pipe';
+import { FormulaireEtudiantComponent } from './formulaire-etudiant/formulaire-etudiant.component';
+import { EtudiantService } from './services/etudiant.service';
+import { AuthGuard } from './services/auth-guard.service';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,9 @@ import { UtilisateurPipe } from './services/utilisateur.pipe';
     CreateFicheComponent,
     RegisterPageComponent,
     NotFoundComponent,
-    UtilisateurPipe
+    UtilisateurPipe,
+    FormulaireEtudiantComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -58,6 +65,7 @@ import { UtilisateurPipe } from './services/utilisateur.pipe';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonToggleModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
     HttpClientModule
@@ -65,7 +73,9 @@ import { UtilisateurPipe } from './services/utilisateur.pipe';
   providers: [
     FichesService,
     UtilisateursService,
-    AuthService
+    EtudiantService,
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

@@ -18,21 +18,14 @@ export class HeaderComponent implements OnInit {
 
   dataIconGoogle = 'assets/images/iconGoogle.png';
 
+  currentUser$!: Observable<firebase.User | null>;
   currentUser!: firebase.User | null;
   currentUtilisateur$!: Observable<Utilisateur | null>;
   currentUtilisateur!: Utilisateur | null;
 
-  constructor(private router: Router, public userAuthService: AuthService, private utilisateurService: UtilisateursService) {}
+  constructor(private router: Router, public authService: AuthService, private utilisateurService: UtilisateursService) {}
 
   ngOnInit() {
-    this.userAuthService.currentUser$.subscribe(user => this.currentUser = user);
-    this.currentUtilisateur$ = this.utilisateurService.getUtilisateurByMail(this.currentUser?.email);
-    this.currentUtilisateur$
-      .subscribe(utilisateur => {
-        this.currentUtilisateur = utilisateur;
-        if (this.currentUtilisateur?.id == null) {
-          this.router.navigate(['/register_page/']);
-        }
-      })
+    this.currentUser$ = this.authService.currentUser$;
   }
 }
