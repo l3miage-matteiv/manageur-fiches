@@ -3,11 +3,14 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Observable } from 'rxjs';
 import { FicheComponent } from '../fiche/fiche.component';
+import { AuthService } from '../services/auth.service';
 import { Etudiant } from '../services/Etudiant';
 import { Fiche } from '../services/Fiche';
 import { FicheRenseignementService } from '../services/fiche-renseignement.service';
 import { FicheRenseignement } from '../services/FicheRenseignement';
 import { FichesService } from '../services/fiches.service';
+import { Utilisateur } from '../services/Utilisateur';
+import { UtilisateursService } from '../services/utilisateurs.service';
 
 @Component({
   selector: 'add-fiche',
@@ -22,14 +25,29 @@ export class AddFicheComponent {
   public lastFicheRenseignement!: FicheRenseignement;
   public nextFicheID!: number;
 
+  fiches$!: Observable<FicheRenseignement[]>;
+  currentUtilisateur$!: Observable<Utilisateur>;
+  currentUtilisateur!: Utilisateur;
+
   constructor(public dialogRef: MatDialogRef<AddFicheComponent>,
               private fichesService: FichesService,
-              private ficheRenseignementService: FicheRenseignementService) {
+              private ficheRenseignementService: FicheRenseignementService,
+              private authService: AuthService,
+              private utilisateurService: UtilisateursService) {
     this.ficheRenseignementService.getLastFiche()
       .subscribe(fiche => {
         this.lastFicheRenseignement = fiche;
         this.nextFicheID = fiche.id + 1;
       })
+      authService.getLoggedUser()
+        .subscribe(user => {
+          this.currentUtilisateur$ = this.utilisateurService.getUtilisateurByMail(user?.email);
+          this.currentUtilisateur$
+            .subscribe(utilisateur => {
+              this.currentUtilisateur = utilisateur;
+              console.log(utilisateur);
+            })
+          });
   }
 
   ficheForm = new FormGroup({
@@ -78,9 +96,9 @@ export class AddFicheComponent {
 
   createNewFiche() {
     const etu: Etudiant = {
-      id: 0,
-      nom: 'Mattei',
-      prenom: 'Vinicius',
+      id: this.currentUtilisateur.id,
+      nom: this.currentUtilisateur.nom,
+      prenom: this.currentUtilisateur.prenom,
       tel: '788971741',
       mail: 'viniciuspmattei@gmail.com',
       adresse: '1015 Avenue des Jeux Olympiques',
@@ -92,7 +110,7 @@ export class AddFicheComponent {
       caisseAssuranceMaladie: 'CPAM',
       inscription: 'L3 MIAGE',
       enseignantReferent: 'Laurence Pierre',
-      typeUtilisateur: 'Étudiant'
+      typeUtilisateur: this.currentUtilisateur.typeUtilisateur
     }
 
     // creer fiche de renseignement
@@ -114,7 +132,7 @@ export class AddFicheComponent {
     };
 
     // notifier serviceRH, tuteur et enseignant par mail de la creation de la fiche
-
+    console.log(this.ficheRenseignement);
     this.ficheRenseignement$ = this.ficheRenseignementService.addFiche(this.ficheRenseignement);
     this.ficheRenseignement$
       .subscribe(fiche => {

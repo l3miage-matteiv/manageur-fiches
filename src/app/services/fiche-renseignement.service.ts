@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
+import { Utilisateur } from './Utilisateur';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,10 @@ export class FicheRenseignementService {
 
   getFiche(idFiche: number): Observable<FicheRenseignement> {
     return this.http.get<FicheRenseignement>(`${this.apiServerUrl}/fiche_renseignement/${idFiche}`);
+  }
+
+  getAllFichesFromUtilisateur(utilisateur: Utilisateur): Observable<FicheRenseignement[]> {
+    return this.http.get<FicheRenseignement[]>(`${this.apiServerUrl}/fiche_renseignement/utilisateur/${utilisateur.id}`);
   }
 
   getLastFiche(): Observable<FicheRenseignement> {

@@ -6,5 +6,4 @@ export interface Etudiant extends Utilisateur {
   caisseAssuranceMaladie: string | 'CPAM' | 'MSA' | 'Travailleur Indépendant' | 'Régimes Spéciaux' | null;
   inscription: string | 'L3 MIAGE' | null;
   enseignantReferent: string | 'Laurence Pierre' | null;
-  typeUtilisateur: 'Étudiant';
 }

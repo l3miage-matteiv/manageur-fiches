@@ -22,7 +22,7 @@ export class UtilisateursService {
     return this.http.get<Utilisateur>(`${this.apiServerUrl}/utilisateur/${idUtilisateur}`);
   }
 
-  getUtilisateurByMail(mailUtilisateur: string | null | undefined): Observable<Utilisateur | null> {
+  getUtilisateurByMail(mailUtilisateur: string | null | undefined): Observable<Utilisateur> {
     return this.http.get<Utilisateur>(`${this.apiServerUrl}/utilisateur/mail/${mailUtilisateur}`);
   }
 

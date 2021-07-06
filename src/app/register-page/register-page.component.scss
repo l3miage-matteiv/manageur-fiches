@@ -34,6 +34,7 @@ div.register-form {
 
       mat-button-toggle {
         // margin: 0 2rem 0 2rem;
+        color: var(--gray-100);
         &.mat-button-toggle-checked {
           background-color: var(--red-600);
         }
@@ -65,8 +66,8 @@ div.register-form {
     button {
       background: var(--red-800);
       border-radius: 4rem;
-      width: 150px;
-      color: var(--white);
+      color: var(--gray-100);
+      text-align: center;
       box-shadow: 3px 3px 6px rgb(0 0 0 / 16%);
 
       &[disabled="true"] {

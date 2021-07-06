@@ -5,7 +5,7 @@
   </div>
   <div class="account">
     <label *ngIf="authService.getLoggedUser()">
-      <span class="display-name">{{(authService.getLoggedUtilisateur() | async)?.prenom}} {{(authService.getLoggedUtilisateur() | async)?.nom}}</span>
+      <span class="display-name">{{(currentUser$ | async)?.displayName}}</span>
     </label>
     <mat-icon mat-button [matMenuTriggerFor]="menuRef">
         account_circle
