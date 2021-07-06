@@ -45,7 +45,6 @@ export class AddFicheComponent {
           this.currentUtilisateur$
             .subscribe(utilisateur => {
               this.currentUtilisateur = utilisateur;
-              console.log(utilisateur);
             })
           });
   }

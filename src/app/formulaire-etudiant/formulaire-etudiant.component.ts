@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { Etudiant } from '../services/Etudiant';
 
 @Component({
@@ -9,11 +10,12 @@ import { Etudiant } from '../services/Etudiant';
 })
 export class FormulaireEtudiantComponent implements OnInit {
 
-  @Input('etudiant') etudiant!: Etudiant | null;
+  @Input('etudiant') etudiant$!: Observable<Etudiant | null>;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.etudiant$.subscribe(etudiant => console.log(etudiant) )
   }
 
   formulaireEtudiant = new FormGroup({

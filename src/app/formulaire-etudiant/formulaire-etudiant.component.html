@@ -2,13 +2,13 @@
   <div class="fields">
     <mat-form-field>
       <mat-label>Nom</mat-label>
-      <input formControlName="nomEtudiant" id="nomEtudiant" value="{{etudiant?.nom}}" matInput/>
+      <input formControlName="nomEtudiant" id="nomEtudiant" value="{{(etudiant$ | async)?.nom}}" matInput/>
       <mat-error *ngIf="nomEtudiant?.errors?.required">Ce champ est requis.</mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Prènom</mat-label>
-      <input formControlName="prenomEtudiant" id="prenomEtudiant" value="{{etudiant?.prenom}}" matInput/>
+      <input formControlName="prenomEtudiant" id="prenomEtudiant" value="{{(etudiant$ | async)?.prenom}}" matInput/>
       <mat-error *ngIf="prenomEtudiant?.errors?.required">Ce champ est requis.</mat-error>
     </mat-form-field>
 
@@ -20,7 +20,7 @@
 
     <mat-form-field>
       <mat-label>E-Mail</mat-label>
-      <input formControlName="mailEtudiant" id="mailEtudiant" type="email" value="{{etudiant?.mail}}" matInput/>
+      <input formControlName="mailEtudiant" id="mailEtudiant" type="email" value="{{(etudiant$ | async)?.mail}}" matInput/>
       <mat-error *ngIf="mailEtudiant?.errors?.required">Ce champ est requis.</mat-error>
       <mat-error *ngIf="mailEtudiant?.errors?.email">Ceci n'est pas un e-mail valide.</mat-error>
     </mat-form-field>

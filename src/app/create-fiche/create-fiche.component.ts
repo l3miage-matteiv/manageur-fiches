@@ -17,7 +17,6 @@ import { Etudiant } from '../services/Etudiant';
 })
 export class CreateFicheComponent implements OnInit {
 
-  id!: number;
   currentUtilisateur$!: Observable<Utilisateur | null>;
   etudiant$!: Observable<Etudiant>;
   fiche$!: Observable<FicheRenseignement>;
@@ -28,14 +27,15 @@ export class CreateFicheComponent implements OnInit {
               private serviceEtudiant: EtudiantService)
   {
     this.currentUtilisateur$ = userAuthService.getLoggedUtilisateur();
-
   }
 
   ngOnInit() {
     let params = this.route.snapshot.paramMap;
-    this.id = Number(params.get('id'));
-    this.etudiant$ = this.serviceEtudiant.getEtudiant(this.id);
-    this.fiche$ = this.ficheRService.getFiche(this.id);
+    let idFiche = Number(params.get('id'));
+    this.currentUtilisateur$.subscribe(utilisateur => {
+      this.etudiant$ = this.serviceEtudiant.getEtudiant(utilisateur?.id as number);
+    })
+    this.fiche$ = this.ficheRService.getFiche(idFiche);
   }
 
   ficheRenseignementForm = new FormGroup({

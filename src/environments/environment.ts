@@ -13,8 +13,8 @@ export const environment = {
     appId: "1:1030640324479:web:3a5f48e855210be24c944a",
     measurementId: "G-YHDVQTK6LE"
   },
-  apiBaseUrl: "https://manageur-fiches-server.herokuapp.com"
-  // apiBaseUrl: "http://localhost:5000"
+  // apiBaseUrl: "https://manageur-fiches-server.herokuapp.com"
+  apiBaseUrl: "http://localhost:5000"
 };
 
 /*

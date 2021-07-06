@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FicheRenseignement } from '../services/FicheRenseignement';
 
 @Component({
   selector: 'fiche',
@@ -7,14 +9,13 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FicheComponent {
 
-  @Input('companyName') companyName: string = '';
-  @Input('recruiter') recruiter: string = '';
-  @Input('progress') status: "En Cours de Traitement" | "Validé" | "Invalidé" = "En Cours de Traitement";
+  @Input('fiche') ficheRenseignement!: FicheRenseignement;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  modifyFiche() {
-    console.log("Modify Fiche");
+  modifyFiche(fiche: FicheRenseignement) {
+    console.log("ID de la fiche: " + fiche.id);
+    this.router.navigate(['/fiche_renseignement/' + fiche.id])
   }
 
 }

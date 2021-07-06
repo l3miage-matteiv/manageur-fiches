@@ -44,39 +44,39 @@ export class RegisterPageComponent implements OnInit {
   register() {
     this.currentUtilisateur$.subscribe(utilisateur => {
       utilisateur.typeUtilisateur = this.typeUtilisateurForm.value;
-      this.utilisateurService.updateUtilisateur(utilisateur);
-
-      if (utilisateur.typeUtilisateur == "Étudiant") {
-        let etudiant: Etudiant = {
-          id: utilisateur.id,
-          nom: utilisateur.nom,
-          prenom: utilisateur.prenom,
-          tel: null,
-          mail: utilisateur.mail,
-          adresse: null,
-          codePostal: null,
-          ville: null,
-          pays: null,
-          typeUtilisateur: utilisateur.typeUtilisateur,
-          numeroEtudiant: null,
-          typeAffiliation: null,
-          caisseAssuranceMaladie: null,
-          inscription: null,
-          enseignantReferent: null
+      this.utilisateurService.updateUtilisateur(utilisateur).subscribe(utilisateur => {
+        if (utilisateur.typeUtilisateur == "Étudiant") {
+          let etudiant: Etudiant = {
+            id: utilisateur.id,
+            nom: utilisateur.nom,
+            prenom: utilisateur.prenom,
+            tel: null,
+            mail: utilisateur.mail,
+            adresse: null,
+            codePostal: null,
+            ville: null,
+            pays: null,
+            typeUtilisateur: utilisateur.typeUtilisateur,
+            numeroEtudiant: null,
+            typeAffiliation: null,
+            caisseAssuranceMaladie: null,
+            inscription: null,
+            enseignantReferent: null
+          }
+          console.log(etudiant);
+          this.etudiantService.addEtudiant(etudiant).subscribe(etudiant => console.log(etudiant));
         }
-        console.log(etudiant);
-        this.etudiantService.addEtudiant(etudiant).subscribe(etudiant => console.log(etudiant));
-      }
-      else if (utilisateur.typeUtilisateur == "ServiceRH") {
+        else if (utilisateur.typeUtilisateur == "ServiceRH") {
 
-      }
-      else if (utilisateur.typeUtilisateur == "Tuteur") {
+        }
+        else if (utilisateur.typeUtilisateur == "Tuteur") {
 
-      }
-      else if (utilisateur.typeUtilisateur == "Enseignant") {
+        }
+        else if (utilisateur.typeUtilisateur == "Enseignant") {
 
-      }
-      this.router.navigate(['']);
+        }
+        this.router.navigate(['']);
+      });
     });
     // this.currentUtilisateur.typeUtilisateur = this.typeUtilisateurForm?.value;
   }
